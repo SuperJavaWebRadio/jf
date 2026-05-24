@@ -29,24 +29,7 @@ html,body{font-family:"Open Sans",sans-serif;height:100%;margin:0;display:flex;f
 <span><b>Whatsapp<b></span></a></li>
 </ul>
 </nav>
-  <script type="text/javascript">
-    // Bloqueia o clique com o botão direito do mouse
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-
-    // Bloqueia atalhos de teclado como Ctrl+C, Ctrl+V, Ctrl+U e F12
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 'v' || e.key === 'V')) {
-            e.preventDefault();
-        }
-        if (e.key === 'F12') {
-            e.preventDefault();
-        }
-    });
-</script>
-</header>
-
+ </header>
 <div id="player"></div>
 <script>
 $("#player").lunaradio({
@@ -109,5 +92,18 @@ $("body").toggleClass("mobile-nav-active");
 $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
 });
 </script>
+  // Bloqueia o clique com o botão direito
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Bloqueia atalhos de teclado (Ctrl+C, Ctrl+V, Ctrl+U, F12)
+document.addEventListener('keydown', event => {
+    if (event.key === 'F12' || 
+        (event.ctrlKey && (event.key === 'c' || event.key === 'u' || event.key === 's'))) {
+        event.preventDefault();
+    }
+});
+
+// Bloqueia a seleção de texto na página
+document.addEventListener('selectstart', event => event.preventDefault());
 </body>
 </html>
