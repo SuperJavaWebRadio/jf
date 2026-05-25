@@ -7,7 +7,7 @@
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1, user-scalable=no"
+content="width=device-width, initial-scale=1"
 >
 
 <meta
@@ -15,31 +15,11 @@ name="theme-color"
 content="#08298a"
 >
 
-<meta
-http-equiv="Cache-Control"
-content="no-cache, no-store, must-revalidate"
->
-
-<meta
-http-equiv="Pragma"
-content="no-cache"
->
-
-<meta
-http-equiv="Expires"
-content="0"
->
-
 <title>SUPER JAVA WEB RÁDIO</title>
 
 <link
-href="css/style.css"
 rel="stylesheet"
->
-
-<link
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-rel="stylesheet"
 >
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -51,19 +31,15 @@ rel="stylesheet"
 html,
 body{
 
-font-family:"Open Sans",sans-serif;
+margin:0;
+padding:0;
 
+width:100%;
 height:100%;
 
-margin:0;
-
-display:flex;
-
-flex-direction:column;
+font-family:Arial,sans-serif;
 
 background:#000;
-
-color:#ffffff;
 
 overflow:hidden;
 
@@ -76,17 +52,9 @@ overflow:hidden;
 width:100%;
 height:100%;
 
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:80px 20px 80px 20px;
-
-box-sizing:border-box;
-
 }
 
-/* BOTÃO MENU */
+/* MENU */
 
 .mobile-nav-toggle{
 
@@ -97,22 +65,20 @@ left:15px;
 
 z-index:9999;
 
-border:none;
-
-background:rgba(0,0,0,.6);
-
-color:#fff;
-
 width:48px;
 height:48px;
 
+border:none;
+
 border-radius:12px;
+
+background:rgba(0,0,0,.65);
+
+color:#fff;
 
 font-size:20px;
 
 cursor:pointer;
-
-backdrop-filter:blur(10px);
 
 }
 
@@ -129,19 +95,15 @@ width:260px;
 
 height:100%;
 
-background:rgba(0,0,0,.96);
-
-z-index:9998;
+background:rgba(0,0,0,.95);
 
 transition:.4s;
 
+z-index:9998;
+
 padding-top:80px;
 
-backdrop-filter:blur(15px);
-
 overflow-y:auto;
-
-overflow-x:hidden;
 
 }
 
@@ -151,15 +113,7 @@ left:0;
 
 }
 
-/* MENU */
-
-.nav-menu{
-
-width:100%;
-
-padding-bottom:30px;
-
-}
+/* LINKS */
 
 .nav-menu ul{
 
@@ -169,31 +123,15 @@ padding:0;
 
 margin:0;
 
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
 }
-
-/* ITENS */
 
 .nav-menu li{
 
-width:100%;
-
-padding:0 15px;
-
-box-sizing:border-box;
+padding:10px 15px;
 
 }
 
-/* LINKS */
-
 .nav-menu a{
-
-width:100%;
 
 display:flex;
 
@@ -201,49 +139,21 @@ align-items:center;
 
 gap:15px;
 
-padding:15px;
+padding:14px;
 
-border-radius:14px;
+border-radius:12px;
 
 background:rgba(255,255,255,.05);
 
-color:#ffffff;
+color:#fff;
 
 text-decoration:none;
 
 font-size:16px;
 
-font-weight:600;
-
 transition:.3s;
 
-box-sizing:border-box;
-
 }
-
-/* ÍCONES */
-
-.nav-menu a i{
-
-font-size:24px;
-
-min-width:30px;
-
-text-align:center;
-
-}
-
-/* TEXTO */
-
-.nav-menu a span{
-
-display:block;
-
-white-space:nowrap;
-
-}
-
-/* HOVER */
 
 .nav-menu a:hover{
 
@@ -251,7 +161,13 @@ background:rgba(0,255,136,.15);
 
 color:#00ff88;
 
-transform:translateX(5px);
+}
+
+.nav-menu i{
+
+font-size:22px;
+
+min-width:25px;
 
 }
 
@@ -266,19 +182,15 @@ right:15px;
 
 z-index:9999;
 
-background:rgba(0,0,0,.55);
+background:rgba(0,0,0,.60);
 
-padding:10px 18px;
+padding:10px 15px;
 
-border-radius:12px;
-
-backdrop-filter:blur(10px);
-
-font-size:18px;
-
-font-weight:bold;
+border-radius:10px;
 
 color:#00ff88;
+
+font-weight:bold;
 
 }
 
@@ -299,17 +211,15 @@ z-index:9999;
 
 footer div{
 
-background:rgba(0,0,0,.88);
+background:rgba(0,0,0,.85);
 
-color:#fff;
+padding:10px;
 
 text-align:center;
 
-padding:12px;
+color:#fff;
 
 font-size:14px;
-
-backdrop-filter:blur(10px);
 
 }
 
@@ -321,36 +231,13 @@ text-decoration:none;
 
 }
 
-footer a:hover{
-
-text-decoration:underline;
-
-}
-
 /* AJUSTE PLAYER */
-
-.lr-player{
-
-max-width:100% !important;
-
-width:100% !important;
-
-height:auto !important;
-
-margin:auto !important;
-
-}
 
 .lr-cover{
 
 border-radius:18px !important;
 
 overflow:hidden;
-
-box-shadow:
-0 0 30px rgba(0,0,0,.5);
-
-max-width:100% !important;
 
 }
 
@@ -366,76 +253,13 @@ color:#000 !important;
 
 }
 
-.lr-controls{
-
-display:flex !important;
-
-justify-content:center !important;
-
-align-items:center !important;
-
-flex-wrap:wrap !important;
-
-gap:10px !important;
-
-width:100% !important;
-
-padding:10px 0 !important;
-
-}
-
-.lr-title,
-.lr-artists{
-
-word-break:break-word !important;
-
-text-align:center !important;
-
-padding:0 10px !important;
-
-}
-
 /* RESPONSIVO */
 
 @media(max-width:768px){
 
 #player{
 
-padding:90px 10px 90px 10px;
-
-}
-
-.background_hora{
-
-font-size:14px;
-
-padding:8px 14px;
-
-}
-
-.lr-player{
-
-transform:scale(.92);
-
-}
-
-#header{
-
-width:250px;
-
-}
-
-.nav-menu a{
-
-font-size:15px;
-
-padding:14px;
-
-}
-
-.nav-menu a i{
-
-font-size:22px;
+transform:scale(.95);
 
 }
 
@@ -443,7 +267,7 @@ font-size:22px;
 
 @media(max-width:480px){
 
-.lr-player{
+#player{
 
 transform:scale(.82);
 
@@ -456,8 +280,6 @@ transform:scale(.82);
 </head>
 
 <body>
-
-<div style="height:100%">
 
 <button
 type="button"
@@ -484,7 +306,7 @@ href="https://play.google.com/store/apps"
 <i class="fab fa-google-play"></i>
 
 <span>
-Baixar nosso APP
+Baixar APP
 </span>
 
 </a>
@@ -529,7 +351,7 @@ Instagram
 
 <a
 target="_blank"
-href="https://wa.me/5532991333934?text=Seja Bem-vindo!!! Essa é a Super Java Web Rádio..."
+href="https://wa.me/5532991333934"
 >
 
 <i class="fab fa-whatsapp-square"></i>
@@ -549,6 +371,32 @@ Whatsapp
 </header>
 
 <div id="player"></div>
+
+<div class="background_hora">
+
+<span id="relogio">
+
+00:00:00
+
+</span>
+
+</div>
+
+<footer>
+
+<div>
+
+© 2026 -
+
+<a href="mailto:contatosuperjavawebradio@gmail.com">
+
+Super Java Web Rádio
+
+</a>
+
+</div>
+
+</footer>
 
 <script>
 
@@ -626,56 +474,19 @@ color4: "#FF1F6F"
 
 });
 
-</script>
-
-<div class="background_hora">
-
-<div id="relogio">
-
-<b>00:00:00</b>
-
-</div>
-
-</div>
-
-<script>
+/* RELÓGIO */
 
 function reloj(){
 
-let elementoID =
-document.getElementById('relogio');
-
-let horalocal =
-new Date().toLocaleTimeString('pt-BR');
-
-elementoID.innerHTML =
-horalocal;
+document.getElementById("relogio")
+.innerHTML =
+new Date().toLocaleTimeString("pt-BR");
 
 }
 
 setInterval(reloj,1000);
 
-</script>
-
-</div>
-
-<footer>
-
-<div>
-
-© Copyright 2026 -
-
-<a href="mailto:contatosuperjavawebradio@gmail.com">
-
-Super Java Web Rádio
-
-</a>
-
-</div>
-
-</footer>
-
-<script>
+/* MENU */
 
 $(".mobile-nav-toggle").click(function(){
 
