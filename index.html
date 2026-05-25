@@ -1,105 +1,10 @@
 <style>
 
-html,
-body{
+/* REDES SOCIAIS */
 
-font-family:"Open Sans",sans-serif;
-
-height:100%;
-
-margin:0;
-
-display:flex;
-
-flex-direction:column;
-
-background:#000;
-
-color:#ffffff;
-
-overflow:hidden;
-
-}
-
-/* PLAYER */
-
-#player{
+.nav-menu{
 
 width:100%;
-height:100%;
-
-/* AJUSTE IMPORTANTE */
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:80px 20px 80px 20px;
-
-box-sizing:border-box;
-
-}
-
-/* MENU */
-
-.mobile-nav-toggle{
-
-position:fixed;
-
-top:15px;
-left:15px;
-
-z-index:9999;
-
-border:none;
-
-background:rgba(0,0,0,.6);
-
-color:#fff;
-
-width:45px;
-height:45px;
-
-border-radius:10px;
-
-font-size:20px;
-
-cursor:pointer;
-
-backdrop-filter:blur(10px);
-
-}
-
-/* MENU LATERAL */
-
-#header{
-
-position:fixed;
-
-top:0;
-left:-260px;
-
-width:250px;
-
-height:100%;
-
-background:rgba(0,0,0,.95);
-
-z-index:9998;
-
-transition:.4s;
-
-padding-top:80px;
-
-backdrop-filter:blur(15px);
-
-overflow-y:auto;
-
-}
-
-body.mobile-nav-active #header{
-
-left:0;
 
 }
 
@@ -111,22 +16,27 @@ padding:0;
 
 margin:0;
 
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
 }
 
 .nav-menu li{
 
-padding:12px 20px;
+width:100%;
 
-border-bottom:
-1px solid rgba(255,255,255,.05);
+padding:0 15px;
+
+box-sizing:border-box;
 
 }
 
 .nav-menu a{
 
-color:#fff;
-
-text-decoration:none;
+width:100%;
 
 display:flex;
 
@@ -134,171 +44,71 @@ align-items:center;
 
 gap:12px;
 
+padding:14px 15px;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.05);
+
+color:#ffffff;
+
+text-decoration:none;
+
 font-size:16px;
 
 transition:.3s;
 
-}
-
-.nav-menu a:hover{
-
-color:#00ff88;
-
-padding-left:5px;
-
-}
-
-.nav-menu i{
-
-font-size:22px;
-
-}
-
-/* RELÓGIO */
-
-.background_hora{
-
-position:fixed;
-
-top:15px;
-right:15px;
-
-z-index:9999;
-
-background:rgba(0,0,0,.55);
-
-padding:10px 18px;
-
-border-radius:12px;
-
-backdrop-filter:blur(10px);
-
-font-size:18px;
-
-font-weight:bold;
-
-color:#00ff88;
-
-}
-
-/* FOOTER */
-
-footer{
-
-position:fixed;
-
-bottom:0;
-left:0;
-
-width:100%;
-
-z-index:9999;
-
-}
-
-footer div{
-
-background:rgba(0,0,0,.88);
-
-color:#fff;
-
-text-align:center;
-
-padding:12px;
-
-font-size:14px;
-
-backdrop-filter:blur(10px);
-
-}
-
-footer a{
-
-color:#00ff88;
-
-text-decoration:none;
-
-}
-
-footer a:hover{
-
-text-decoration:underline;
-
-}
-
-/* AJUSTE PLAYER LUNARADIO */
-
-.lr-player{
-
-max-width:100% !important;
-
-width:100% !important;
-
-height:auto !important;
-
-margin:auto !important;
-
-}
-
-/* CAPA */
-
-.lr-cover{
-
-border-radius:18px !important;
+box-sizing:border-box;
 
 overflow:hidden;
 
-box-shadow:
-0 0 30px rgba(0,0,0,.5);
-
-max-width:100% !important;
-
 }
 
-/* BOTÃO PLAY */
+/* ÍCONES */
 
-.lr-play-btn{
+.nav-menu a i{
 
-background:#00ff88 !important;
+font-size:22px;
 
-}
+min-width:30px;
 
-.lr-play-btn i{
-
-color:#000 !important;
-
-}
-
-/* CONTROLES */
-
-.lr-controls{
-
-display:flex !important;
-
-justify-content:center !important;
-
-align-items:center !important;
-
-flex-wrap:wrap !important;
-
-gap:10px !important;
-
-width:100% !important;
-
-padding:10px 0 !important;
+text-align:center;
 
 }
 
 /* TEXTO */
 
-.lr-title,
-.lr-artists{
+.nav-menu a span{
 
-word-break:break-word !important;
+display:block;
 
-text-align:center !important;
+white-space:nowrap;
 
-padding:0 10px !important;
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+}
+
+/* HOVER */
+
+.nav-menu a:hover{
+
+background:rgba(0,255,136,.15);
+
+color:#00ff88;
+
+transform:translateX(5px);
+
+}
+
+/* AJUSTE MENU */
+
+#header{
+
+overflow-y:auto;
+
+overflow-x:hidden;
 
 }
 
@@ -306,33 +116,17 @@ padding:0 10px !important;
 
 @media(max-width:768px){
 
-#player{
+#header{
 
-padding:90px 10px 90px 10px;
-
-}
-
-.background_hora{
-
-font-size:14px;
-
-padding:8px 14px;
+width:260px;
 
 }
 
-.lr-player{
+.nav-menu a{
 
-transform:scale(.92);
+font-size:15px;
 
-}
-
-}
-
-@media(max-width:480px){
-
-.lr-player{
-
-transform:scale(.82);
+padding:13px 14px;
 
 }
 
