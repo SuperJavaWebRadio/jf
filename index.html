@@ -92,6 +92,30 @@ $("body").toggleClass("mobile-nav-active");
 $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
 });
 </script>
+  <script>
+  // 1. Bloqueia o clique com botão direito
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+  // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && (
+        e.key === 'c' || 
+        e.key === 'C' || 
+        e.key === 'v' || 
+        e.key === 'V' || 
+        e.key === 'u' || 
+        e.key === 'U' || 
+        e.key === 's' || 
+        e.key === 'S'
+      ))
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>
 
 </body>
 </html>
