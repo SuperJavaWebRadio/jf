@@ -1,6 +1,6 @@
 <head>
 <meta charset="UTF-8">
-<title>SUPER JAVA WEB RÁDIO</title>
+<title></title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/lunaradio.js"></script>
@@ -22,7 +22,7 @@
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   border: none;'>
-<div a href="SUPER JAVA WEB RADIO" title="SUPER JAVA WEB RADIO"></a> Desenvolvido por: SJWR <a href="EDILSON" title="SUPER JAVA"></a></div>
+<div a href="SJWR" title="SUPER JAVA WEB RADIO"></a> Desenvolvido por: Java Denirow <a href="SJWR" title="SUPER JAVA WEB RADIO"></a></div>
 
 
 <script src="js/jquery-3.2.1.min.js" type="3bc5e4e5245e387f3290c38f-text/javascript"></script>
@@ -36,34 +36,33 @@ $("#lunaradio").lunaradio({
 	userinterface: "big",
 	backgroundcolor: "rgba(9,15,25,0.8)",
 	fontcolor: "#ffffff",
-	hightlightcolor: "#000000",
+	hightlightcolor: "#fa225b",
 	fontname: "Saira Condensed",
 	googlefont: "Saira+Condensed:wght@100",
-	fontratio: "0.4",
-	radioname: "Você esta ouvindo agora",
+	fontratio: "0.3",
+	radioname: "TOCANDO AGORA",
 	scroll: "true",
-	coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
-	onlycoverimage: "false",
-	coverstyle: "animated",
+	coverimage: "https://static.wixstatic.com/media/689246_119c271de43a420ca077984ef84b61f0~mv2.png",
 	usevisualizer: "real",
+	coverstyle: "animated",
 	visualizertype: "8",
 	multicolorvisualizer: "true",
-    color1: "#00FF00",
-    color2: "#ffff00",
-    color3: "#FF1F6F",
-    color4: "#FF1F6F",
+    color1: "f6f6f6",
+    color2: "323edd",
+    color3: "fc5404",
+    color4: "#fa225b",
 	itunestoken: "1000lIPN",
 	metadatatechnic: "corsproxy",
 	ownmetadataurl: "",
-	streamurl: "https://stream-176.zeno.fm/ego2eudayomtv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJlZ28yZXVkYXlvbXR2IiwiaG9zdCI6InN0cmVhbS0xNzYuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Ik90bmV5MUUyVGhxc29LVUIySGIzMHciLCJpYXQiOjE3NzE1MzEwMTUsImV4cCI6MTc3MTUzMTA3NX0._q_maVvje0NYlmG53PKlWZEBr_pb4qzusNaUotonQKo",
-	streamtype: "icecast2",
+	streamurl: "https://stream-176.zeno.fm/ego2eudayomtv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJlZ28yZXVkYXlvbXR2IiwiaG9zdCI6InN0cmVhbS0xNzYuemVuby5mbSIsInRtIjpmYWxzZSwicnR0bCI6NSwianRpIjoiaWI1UzE3TElRbjJEaWE4cnJMQ0V6USIsImlhdCI6MTc2Mjk3NDY2NCwiZXhwIjoxNzYyOTc0NzI0fQ.pVSATtsyMfcHRJGUuXCGnuWSstuk3-JjPwEWFs8Z24w",
+	streamtype: "Icecast2",
 	icecastmountpoint: "/live",
 	radionomyid: "",
 	radionomyapikey: "",
 	radiozenoid: "",
 	radiojarid: "",
 	radiocoid: "",
-	shoutcastpath: "",
+	shoutcastpath: "/stream",
 	shoutcastid: "1",
 	streamsuffix: "",
 	metadatainterval: "20000",
@@ -72,31 +71,44 @@ $("#lunaradio").lunaradio({
 	usestreamcorsproxy: "false", 
 	corsproxy: "https://corsradio.herokuapp.com/index.php?q=",
 	autoplay:"true",
+	displayliveicon: "true",
+visualizeropacity: "1.0",
+multicolorvisualizer: "true",
+color1: "#00FF00",
+color2: "#ffff00",
+color3: "#FF1F6F",
+color4: "#FF1F6F",
 });
 </script>
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="3bc5e4e5245e387f3290c38f-|49" defer=""></script>					
+
+
+<div class="background_hora"><div id="relogio">15:00:05</div></div>
 <script>
-  // 1. Bloqueia o clique com botão direito
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-  });
-  // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
-  document.addEventListener('keydown', function (e) {
-    if (
-      e.key === 'F12' ||
-      (e.ctrlKey && (
-        e.key === 'c' || 
-        e.key === 'C' || 
-        e.key === 'v' || 
-        e.key === 'V' || 
-        e.key === 'u' || 
-        e.key === 'U' || 
-        e.key === 's' || 
-        e.key === 'S'
-      ))
-    ) {
-      e.preventDefault();
-    }
-  });
+function reloj() {
+let elementoID = document.getElementById('relogio');
+let horalocal = new Date().toLocaleTimeString('es');
+elementoID.innerHTML = horalocal;
+}
+setInterval(reloj, 1000);
 </script>
+</div>
+
+
+<footer style="display:grid;align-content:end">
+<div style="background-color:#222;color:#fff;text-align:center;padding:10px"> 
+&copy; Copyright 2024 - Super Java Web Rádio</a> 
+</div>
+</footer>
+
+<script>
+$(".mobile-nav-toggle").click(function(){
+$("body").toggleClass("mobile-nav-active");
+$(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
+});
+</script>
+</body>
+</html>
+});
+</script>					
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="3bc5e4e5245e387f3290c38f-|49" defer=""></script>
 </body>
