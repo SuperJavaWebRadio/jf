@@ -1,544 +1,120 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
+<!doctype html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1220">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="theme-color" content="#08298a">
+<title> SUPER JAVA WEB RÁDIO</title>
 
-<title>Super Java Web Rádio</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+<link href="css/style.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="js/lunaradio-animado.js"></script>
-
 <style>
-
-:root{
-    --primary:#0f172a;
-    --secondary:#111827;
-    --accent:#2563eb;
-    --accent-hover:#1d4ed8;
-    --text:#ffffff;
-    --gray:#94a3b8;
-    --card:rgba(255,255,255,0.04);
-    --border:rgba(255,255,255,0.08);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:'Segoe UI',sans-serif;
-    background:#020617;
-    color:var(--text);
-    overflow-x:hidden;
-}
-
-/* HEADER */
-
-header{
-    width:100%;
-    position:fixed;
-    top:0;
-    z-index:999;
-    background:rgba(2,6,23,0.92);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--border);
-}
-
-.header-container{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 25px;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo img{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    object-fit:cover;
-    border:2px solid rgba(255,255,255,0.08);
-}
-
-.logo h1{
-    font-size:22px;
-    font-weight:700;
-}
-
-.logo span{
-    color:var(--gray);
-    font-size:13px;
-}
-
-/* MENU */
-
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:25px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#fff;
-    font-size:15px;
-    transition:0.3s;
-    font-weight:500;
-}
-
-nav a:hover{
-    color:var(--accent);
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:120px 20px 60px;
-    background:
-    linear-gradient(rgba(2,6,23,0.82),rgba(2,6,23,0.96)),
-    url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1600&auto=format&fit=crop') center/cover;
-}
-
-.hero-content{
-    width:100%;
-    max-width:1200px;
-    display:grid;
-    grid-template-columns:1fr 480px;
-    gap:60px;
-    align-items:center;
-}
-
-/* LEFT */
-
-.hero-text h2{
-    font-size:58px;
-    line-height:1.1;
-    margin-bottom:25px;
-    font-weight:800;
-}
-
-.hero-text p{
-    color:var(--gray);
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:35px;
-    max-width:650px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:14px 26px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-}
-
-.btn-primary{
-    background:var(--accent);
-    color:#fff;
-}
-
-.btn-primary:hover{
-    background:var(--accent-hover);
-}
-
-.btn-outline{
-    border:1px solid var(--border);
-    color:#fff;
-}
-
-.btn-outline:hover{
-    background:rgba(255,255,255,0.05);
-}
-
-/* PLAYER CARD */
-
-.player-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:28px;
-    padding:30px;
-    backdrop-filter:blur(18px);
-    box-shadow:0 20px 60px rgba(0,0,0,0.35);
-}
-
-.player-top{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.player-top img{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-bottom:20px;
-    border:4px solid rgba(255,255,255,0.08);
-}
-
-.player-top h3{
-    font-size:26px;
-    margin-bottom:8px;
-}
-
-.player-top p{
-    color:var(--gray);
-    font-size:14px;
-}
-
-/* LIVE */
-
-.live-status{
-    margin-top:22px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    color:#22c55e;
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.live-dot{
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    background:#22c55e;
-    animation:blink 1s infinite;
-}
-
-@keyframes blink{
-
-    0%{
-        opacity:1;
-    }
-
-    50%{
-        opacity:0.3;
-    }
-
-    100%{
-        opacity:1;
-    }
-
-}
-
-/* CLOCK */
-
-.clock{
-    margin-top:25px;
-    text-align:center;
-    font-size:34px;
-    font-weight:bold;
-    letter-spacing:2px;
-}
-
-/* SOCIAL */
-
-.social{
-    margin-top:35px;
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.social a{
-    width:50px;
-    height:50px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(255,255,255,0.05);
-    color:#fff;
-    text-decoration:none;
-    transition:0.3s;
-    font-size:20px;
-}
-
-.social a:hover{
-    background:var(--accent);
-    transform:translateY(-4px);
-}
-
-/* FOOTER */
-
-footer{
-    background:#020617;
-    border-top:1px solid var(--border);
-    text-align:center;
-    padding:30px 20px;
-    color:var(--gray);
-    font-size:14px;
-}
-
-/* MOBILE */
-
-@media(max-width:980px){
-
-    .hero-content{
-        grid-template-columns:1fr;
-    }
-
-    .hero-text{
-        text-align:center;
-    }
-
-    .hero-text p{
-        margin:auto auto 35px;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-}
-
-@media(max-width:768px){
-
-    nav{
-        display:none;
-    }
-
-    .hero-text h2{
-        font-size:38px;
-    }
-
-    .clock{
-        font-size:26px;
-    }
-
-    .player-card{
-        padding:22px;
-    }
-
-}
-
+html,body{font-family:"Open Sans",sans-serif;height:100%;margin:0;display:flex;flex-direction:column;color:#272829;}
 </style>
 </head>
-
 <body>
-
-<header>
-
-<div class="header-container">
-
-<div class="logo">
-
-<img src="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png" alt="Logo Rádio">
-
-<div>
-<h1>Super Java Web Rádio</h1>
-<span>Transmissão profissional 24 horas</span>
-</div>
-
-</div>
-
-<nav>
+<div style="height:100%">
+<button type="button" class="mobile-nav-toggle"><i class="fas fa-bars"></i></button>
+<header id="header">
+<nav class="nav-menu">
 <ul>
-
-<li><a href="#">Início</a></li>
-<li><a href="#">Programação</a></li>
-<li><a href="#">Locutores</a></li>
-<li><a href="#">Contato</a></li>
-
+<li><a target="_blank" href="https://play.google.com/store/apps"><i class="fab fa-google-play"></i> <span><b>Baixar nosso APP<b></span></a></li>
+<li><a target="_blank" href="https://www.facebook.com/superjavawebradio"><i class="fab fa-facebook-square" alt="Facebook"></i>
+<span><b>Facebook<b></span></a></li>
+<li><a target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram-square" alt="Instagram"></i>
+<span><b>Instagram<b></span></a></li>
+<li><a href="https://wa.me/5532991333934?text=Seja Bem-vindo!!! Essa é a Super Java Web Rádio..." target="_blank"><i class="fab fa-whatsapp-square" alt="Whatsapp"></i>
+<span><b>Whatsapp<b></span></a></li>
 </ul>
 </nav>
-
-</div>
-
 </header>
 
-<section class="hero">
-
-<div class="hero-content">
-
-<!-- TEXTO -->
-
-<div class="hero-text">
-
-<h2>
-A melhor experiência em rádio digital profissional
-</h2>
-
-<p>
-Música, entretenimento, informação e qualidade sonora em uma transmissão moderna, segura e disponível 24 horas por dia para ouvintes do Brasil e do mundo.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#" class="btn btn-primary">
-<i class="fas fa-play"></i>
-Ouvir Agora
-</a>
-
-<a href="https://wa.me/5532991333934" class="btn btn-outline" target="_blank">
-<i class="fab fa-whatsapp"></i>
-Fale Conosco
-</a>
-
-</div>
-
-</div>
-
-<!-- PLAYER -->
-
-<div class="player-card">
-
-<div class="player-top">
-
-<img src="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png" alt="Super Java Web Rádio">
-
-<h3>Super Java Web Rádio</h3>
-
-<p>Transmissão ao vivo em alta qualidade</p>
-
-</div>
-
 <div id="player"></div>
-
-<div class="live-status">
-
-<div class="live-dot"></div>
-
-AO VIVO
-
-</div>
-
-<div class="clock" id="relogio">
-00:00:00
-</div>
-
-<div class="social">
-
-<a href="https://www.facebook.com/superjavawebradio" target="_blank">
-<i class="fab fa-facebook-f"></i>
-</a>
-
-<a href="https://www.instagram.com/" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://wa.me/5532991333934" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<a href="https://play.google.com/store/apps" target="_blank">
-<i class="fab fa-google-play"></i>
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Super Java Web Rádio — Todos os direitos reservados.
-
-</footer>
-
 <script>
-
-/* PLAYER */
-
 $("#player").lunaradio({
-
-    userinterface: "big",
-
-    backgroundcolor: "rgba(255,255,255,0.02)",
-
-    fontcolor: "#ffffff",
-
-    hightlightcolor: "#2563eb",
-
-    fontname: "Segoe UI",
-
-    fontratio: "0.4",
-
-    radioname: "🎵 Tocando Agora",
-
-    scroll: true,
-
-    coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
-
-    coverstyle: "animated",
-
-    usevisualizer: "real",
-
-    visualizertype: "8",
-
-    metadatatechnic: "fallback",
-
-    streamurl: "https://stream-176.zeno.fm/ego2eudayomtv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJlZ28yZXVkYXlvbXR2IiwiaG9zdCI6InN0cmVhbS0xNzYuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Ik90bmV5MUUyVGhxc29LVUIySGIzMHciLCJpYXQiOjE3NzE1MzEwMTUsImV4cCI6MTc3MTUzMTA3NX0._q_maVvje0NYlmG53PKlWZEBr_pb4qzusNaUotonQKo",
-
-    streamtype: "zeno",
-
-    idzeno: "ego2eudayomtv",
-
-    autoplay: true,
-
-    volume: "100",
-
-    displayliveicon: true,
-
-    visualizeropacity: "1.0",
-
-    multicolorvisualizer: true,
-
-    color1: "#2563eb",
-    color2: "#00c6ff",
-    color3: "#22c55e",
-    color4: "#ffffff"
-
+userinterface: "big", 
+backgroundcolor: "rgba(9,15,25,0.8)",
+fontcolor: "#ffffff",
+hightlightcolor: "#000000", 
+fontname: "Saira Condensed", 
+googlefont: "Saira+Condensed:wght@100", 
+fontratio: "0.4", 
+radioname: "Você esta ouvindo agora...", 
+scroll: "true", 
+coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
+onlycoverimage: "false",
+coverstyle: "animated",
+usevisualizer: "real", 
+visualizertype: "8", 
+itunestoken: "1000lIPN", 
+metadatatechnic: "fallback", //fallback (usar para zeno)
+corsproxy: "",
+usestreamcorsproxy: "false",
+streamurl: "https://stream-176.zeno.fm/ego2eudayomtv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJlZ28yZXVkYXlvbXR2IiwiaG9zdCI6InN0cmVhbS0xNzYuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Ik90bmV5MUUyVGhxc29LVUIySGIzMHciLCJpYXQiOjE3NzE1MzEwMTUsImV4cCI6MTc3MTUzMTA3NX0._q_maVvje0NYlmG53PKlWZEBr_pb4qzusNaUotonQKo",
+streamtype: "zeno", //soporta: zeno, icecast2, shoutcast2
+idzeno: "ego2eudayomtv",
+icecastmountpoint: "", 
+shoutcastpath: "",
+shoutcastid: "1", 
+metadatainterval: "26000", 
+volume: "100",
+debug: "false",
+autoplay: "true",
+displayliveicon: "true",
+visualizeropacity: "1.0",
+multicolorvisualizer: "true",
+color1: "#00FF00",
+color2: "#ffff00",
+color3: "#FF1F6F",
+color4: "#FF1F6F",
 });
-
-/* RELÓGIO */
-
-function atualizarRelogio(){
-
-    const relogio = document.getElementById("relogio");
-
-    const agora = new Date().toLocaleTimeString("pt-BR");
-
-    relogio.innerHTML = agora;
-
-}
-
-setInterval(atualizarRelogio,1000);
-
 </script>
-
+<div class="background_hora"><div id="relogio"><b>00:00:00<b></div></div>
+<script>
+function reloj() {
+let elementoID = document.getElementById('relogio');
+let horalocal = new Date().toLocaleTimeString('es');
+elementoID.innerHTML = horalocal;
+}
+setInterval(reloj, 1000);
+</script>
+</div>
+<footer style="display:grid;align-content:end">
+<div style="background-color:#000;color:#fff;text-align:center;padding:10px"> 
+&copy; Copyright 2026 - <a href="mailto:contatosuperjavawebradio@gmail.com?subject=Seu%20Assunto&body=Este%20é%20o%20corpo%20da%20mensagem. Use %20">Super Java Web Rádio</a> 
+</div>
+</footer>
+<script>
+$(".mobile-nav-toggle").click(function(){
+$("body").toggleClass("mobile-nav-active");
+$(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
+});
+</script>
+<script>
+  // 1. Bloqueia o clique com botão direito
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+  // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && (
+        e.key === 'c' || 
+        e.key === 'C' || 
+        e.key === 'v' || 
+        e.key === 'V' || 
+        e.key === 'u' || 
+        e.key === 'U' || 
+        e.key === 's' || 
+        e.key === 'S'
+      ))
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
