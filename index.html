@@ -118,6 +118,20 @@ $("body").toggleClass("mobile-nav-active");
 $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
 });
 </script>
+      <script>
+        async function atualizarMetadados() {
+            try {
+                const resposta = await fetch('https://stream-178.zeno.fm/ego2eudayomtv');
+                const dados = await resposta.json();
+                const musicaAtual = dados.icecast.source.title;
+                document.getElementById('metadado-musica').innerText = musicaAtual;
+            } catch (erro) {
+                console.error('Erro:', erro);
+            }
+        }
+        setInterval(atualizarMetadados, 10000);
+        atualizarMetadados();
+    </script>
 
 </body>
 </html>
