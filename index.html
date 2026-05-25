@@ -118,7 +118,10 @@ $("body").toggleClass("mobile-nav-active");
 $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
 });
 </script>
-      <script>
+      <h1>SUPER JAVA WEB RÁDIO</h1>
+    <!-- Onde o nome da música vai aparecer -->
+    <p>Tocando agora: <span id="metadado-musica">Carregando...</span></p>
+    <script>
         async function atualizarMetadados() {
             try {
                 const resposta = await fetch('https://stream-178.zeno.fm/ego2eudayomtv');
