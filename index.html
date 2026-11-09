@@ -17,7 +17,7 @@ content="#08298a"
 
 <title>SUPER JAVA WEB RÁDIO</title>
 
-  <link
+<link
 rel="icon"
 type="image/png"
 href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png"
@@ -40,250 +40,211 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css
 <style>
 
 html,
-body{
-
-margin:0;
-padding:0;
-
-width:100%;
-height:100%;
-
-font-family:Arial,sans-serif;
-
-background:#000;
-
-overflow:hidden;
-
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #000;
+    overflow: hidden;
 }
 
 /* PLAYER */
-
-#player{
-
-width:100%;
-height:100%;
-
+#player {
+    width: 100%;
+    height: 100%;
 }
 
 /* MENU */
-
-.mobile-nav-toggle{
-
-position:fixed;
-
-top:15px;
-left:15px;
-
-z-index:9999;
-
-width:48px;
-height:48px;
-
-border:none;
-
-border-radius:12px;
-
-background:rgba(0,0,0,.65);
-
-color:#fff;
-
-font-size:20px;
-
-cursor:pointer;
-
+.mobile-nav-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(0,0,0,.65);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /* MENU LATERAL */
-
-#header{
-
-position:fixed;
-
-top:0;
-left:-270px;
-
-width:260px;
-
-height:100%;
-
-background:rgba(0,0,0,.95);
-
-transition:.4s;
-
-z-index:9998;
-
-padding-top:80px;
-
-overflow-y:auto;
-
+#header {
+    position: fixed;
+    top: 0;
+    left: -270px;
+    width: 260px;
+    height: 100%;
+    background: rgba(0,0,0,.95);
+    transition: .4s;
+    z-index: 9998;
+    padding-top: 80px;
+    overflow-y: auto;
 }
 
-body.mobile-nav-active #header{
-
-left:0;
-
+body.mobile-nav-active #header {
+    left: 0;
 }
 
 /* LINKS */
-
-.nav-menu ul{
-
-list-style:none;
-
-padding:0;
-
-margin:0;
-
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.nav-menu li{
-
-padding:10px 15px;
-
+.nav-menu li {
+    padding: 10px 15px;
 }
 
-.nav-menu a{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-padding:14px;
-
-border-radius:12px;
-
-background:rgba(255,255,255,.05);
-
-color:#fff;
-
-text-decoration:none;
-
-font-size:16px;
-
-transition:.3s;
-
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.05);
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: .3s;
 }
 
-.nav-menu a:hover{
-
-background:rgba(0,255,136,.15);
-
-color:#00ff88;
-
+.nav-menu a:hover {
+    background: rgba(0,255,136,.15);
+    color: #00ff88;
 }
 
-.nav-menu i{
-
-font-size:22px;
-
-min-width:25px;
-
+.nav-menu i {
+    font-size: 22px;
+    min-width: 25px;
 }
 
 /* RELÓGIO */
-
-.background_hora{
-
-position:fixed;
-
-top:15px;
-right:15px;
-
-z-index:9999;
-
-background:rgba(0,0,0,.60);
-
-padding:10px 15px;
-
-border-radius:10px;
-
-color:#00ff88;
-
-font-weight:bold;
-
+.background_hora {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    background: rgba(0,0,0,.60);
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #00ff88;
+    font-weight: bold;
 }
 
 /* FOOTER */
-
-footer{
-
-position:fixed;
-
-bottom:0;
-left:0;
-
-width:100%;
-
-z-index:9999;
-
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 }
 
-footer div{
-
-background:rgba(0,0,0,.85);
-
-padding:10px;
-
-text-align:center;
-
-color:#fff;
-
-font-size:14px;
-
+footer div {
+    background: rgba(0,0,0,.85);
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
 }
 
-footer a{
-
-color:#00ff88;
-
-text-decoration:none;
-
+footer a {
+    color: #00ff88;
+    text-decoration: none;
 }
 
 /* AJUSTE PLAYER */
-
-.lr-cover{
-
-border-radius:18px !important;
-
-overflow:hidden;
-
+.lr-cover {
+    border-radius: 18px !important;
+    overflow: hidden;
 }
 
-.lr-play-btn{
-
-background:#00ff88 !important;
-
+.lr-play-btn {
+    background: #00ff88 !important;
 }
 
-.lr-play-btn i{
+.lr-play-btn i {
+    color: #000 !important;
+}
 
-color:#000 !important;
+/* FAIXA DE PATROCINADORES */
+#faixa-patrocinadores {
+    position: fixed;
+    bottom: 42px;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,.72);
+    z-index: 9997;
+}
 
+#movimento-patrocinadores {
+    display: flex;
+    width: max-content;
+    flex-shrink: 0;
+    animation: patrocinadores-direita 45s linear infinite;
+}
+
+.grupo-patrocinadores {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 45px;
+    padding-right: 45px;
+}
+
+.grupo-patrocinadores img {
+    display: block;
+    width: 135px;
+    height: 65px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@keyframes patrocinadores-direita {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 /* RESPONSIVO */
+@media (max-width: 768px) {
+    #player {
+        transform: scale(.95);
+    }
 
-@media(max-width:768px){
+    #faixa-patrocinadores {
+        height: 70px;
+        bottom: 42px;
+    }
 
-#player{
+    .grupo-patrocinadores {
+        gap: 25px;
+        padding-right: 25px;
+    }
 
-transform:scale(.95);
-
+    .grupo-patrocinadores img {
+        width: 100px;
+        height: 52px;
+    }
 }
 
-}
-
-@media(max-width:480px){
-
-#player{
-
-transform:scale(.82);
-
-}
-
+@media (max-width: 480px) {
+    #player {
+        transform: scale(.82);
+    }
 }
 
 </style>
@@ -295,6 +256,7 @@ transform:scale(.82);
 <button
 type="button"
 class="mobile-nav-toggle"
+aria-label="Abrir menu"
 >
 
 <i class="fas fa-bars"></i>
@@ -308,71 +270,47 @@ class="mobile-nav-toggle"
 <ul>
 
 <li>
-
 <a
 target="_blank"
+rel="noopener"
 href="https://play.google.com/store/apps"
 >
-
 <i class="fab fa-google-play"></i>
-
-<span>
-Baixar APP
-</span>
-
+<span>Baixar APP</span>
 </a>
-
 </li>
 
 <li>
-
 <a
 target="_blank"
+rel="noopener"
 href="https://www.facebook.com/superjavawebradio"
 >
-
 <i class="fab fa-facebook-square"></i>
-
-<span>
-Facebook
-</span>
-
+<span>Facebook</span>
 </a>
-
 </li>
 
 <li>
-
 <a
 target="_blank"
+rel="noopener"
 href="https://www.instagram.com/"
 >
-
 <i class="fab fa-instagram-square"></i>
-
-<span>
-Instagram
-</span>
-
+<span>Instagram</span>
 </a>
-
 </li>
 
 <li>
-
 <a
 target="_blank"
+rel="noopener"
 href="https://wa.me/5532991333934"
 >
-
 <i class="fab fa-whatsapp-square"></i>
-
-<span>
-Whatsapp
-</span>
-
+<span>Whatsapp</span>
 </a>
-
 </li>
 
 </ul>
@@ -384,128 +322,146 @@ Whatsapp
 <div id="player"></div>
 
 <div class="background_hora">
+<span id="relogio">00:00:00</span>
+</div>
 
-<span id="relogio">
+<!-- FAIXA DE PATROCINADORES -->
+<div id="faixa-patrocinadores">
 
-00:00:00
+    <div id="movimento-patrocinadores">
 
-</span>
+        <div class="grupo-patrocinadores">
+
+            <img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png" alt="Patrocinador 1">
+            <img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png" alt="Patrocinador 2">
+            <img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg" alt="Patrocinador 3">
+            <img src="https://static.wixstatic.com/media/689246_8a431b1b1e2a461b881bad2541b95f08~mv2.png" alt="Patrocinador 4">
+            <img src="https://static.wixstatic.com/media/689246_461fdaa13c3d41e98cad9b4f236d45e0~mv2.png" alt="Patrocinador 5">
+            <img src="https://static.wixstatic.com/media/689246_48b6e6ea22384922b5d3ccb653d6c56c~mv2.png" alt="Patrocinador 6">
+            <img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png" alt="Patrocinador 7">
+            <img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png" alt="Patrocinador 8">
+            <img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png" alt="Patrocinador 9">
+
+        </div>
+
+        <!-- Cópia idêntica para criar a animação contínua -->
+        <div class="grupo-patrocinadores" aria-hidden="true">
+
+            <img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg" alt="">
+            <img src="https://static.wixstatic.com/media/689246_8a431b1b1e2a461b881bad2541b95f08~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_461fdaa13c3d41e98cad9b4f236d45e0~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_48b6e6ea22384922b5d3ccb653d6c56c~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png" alt="">
+            <img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png" alt="">
+
+        </div>
+
+    </div>
 
 </div>
+<!-- FIM DA FAIXA DE PATROCINADORES -->
 
 <footer>
-
 <div>
-
 © 2026 -
-
 <a href="mailto:contatosuperjavawebradio@gmail.com">
-
 Super Java Web Rádio
-
 </a>
-
 </div>
-
 </footer>
 
 <script>
 
 $("#player").lunaradio({
 
-userinterface: "big",
+    userinterface: "big",
 
-backgroundcolor: "rgba(9,15,25,0.80)",
+    backgroundcolor: "rgba(9,15,25,0.80)",
 
-fontcolor: "#ffffff",
+    fontcolor: "#ffffff",
 
-hightlightcolor: "#00ff88",
+    hightlightcolor: "#00ff88",
 
-fontname: "Saira Condensed",
+    fontname: "Saira Condensed",
 
-googlefont: "Saira+Condensed:wght@100",
+    googlefont: "Saira+Condensed:wght@100",
 
-fontratio: "0.4",
+    fontratio: "0.4",
 
-radioname: "Você está ouvindo agora...",
+    radioname: "Você está ouvindo agora...",
 
-scroll: "true",
+    scroll: "true",
 
-coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
+    coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
 
-onlycoverimage: "false",
+    onlycoverimage: "false",
 
-coverstyle: "animated",
+    coverstyle: "animated",
 
-usevisualizer: "real",
+    usevisualizer: "real",
 
-visualizertype: "8",
+    visualizertype: "8",
 
-itunestoken: "1000lIPN",
+    itunestoken: "1000lIPN",
 
-metadatatechnic: "corsproxy",
+    metadatatechnic: "corsproxy",
 
-corsproxy: "https://corsproxy.io/?",
+    corsproxy: "https://corsproxy.io/?",
 
-usestreamcorsproxy: "false",
+    usestreamcorsproxy: "false",
 
-streamurl: "https://stream.zeno.fm/ego2eudayomtv.mp3",
+    streamurl: "https://stream.zeno.fm/ego2eudayomtv.mp3",
 
-streamtype: "zeno",
+    streamtype: "zeno",
 
-idzeno: "ego2eudayomtv",
+    idzeno: "ego2eudayomtv",
 
-icecastmountpoint: "",
+    icecastmountpoint: "",
 
-shoutcastpath: "",
+    shoutcastpath: "",
 
-shoutcastid: "1",
+    shoutcastid: "1",
 
-metadatainterval: "20000",
+    metadatainterval: "20000",
 
-volume: "100",
+    volume: "100",
 
-debug: "false",
+    debug: "false",
 
-autoplay: "true",
+    autoplay: "true",
 
-displayliveicon: "true",
+    displayliveicon: "true",
 
-visualizeropacity: "1.0",
+    visualizeropacity: "1.0",
 
-multicolorvisualizer: "true",
+    multicolorvisualizer: "true",
 
-color1: "#00FF00",
+    color1: "#00FF00",
 
-color2: "#ffff00",
+    color2: "#ffff00",
 
-color3: "#FF1F6F",
+    color3: "#FF1F6F",
 
-color4: "#FF1F6F"
+    color4: "#FF1F6F"
 
 });
 
 /* RELÓGIO */
-
-function reloj(){
-
-document.getElementById("relogio")
-.innerHTML =
-new Date().toLocaleTimeString("pt-BR");
-
+function reloj() {
+    document.getElementById("relogio").innerHTML =
+        new Date().toLocaleTimeString("pt-BR");
 }
 
-setInterval(reloj,1000);
+reloj();
+setInterval(reloj, 1000);
 
 /* MENU */
-
-$(".mobile-nav-toggle").click(function(){
-
-$("body").toggleClass("mobile-nav-active");
-
-$(".mobile-nav-toggle i")
-.toggleClass("fa-bars fa-times");
-
+$(".mobile-nav-toggle").click(function() {
+    $("body").toggleClass("mobile-nav-active");
+    $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
 });
 
 </script>
