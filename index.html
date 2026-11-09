@@ -507,19 +507,68 @@ $(".mobile-nav-toggle i")
 .toggleClass("fa-bars fa-times");
 
 });
-  <Center><MARQUEE BGCOLOR="#000000"><FONT COLOR="#00FF00"><b>COLOQUE AQUI O SEU BANNER.  ANUNCIE!!! superjavawebradio@gmail.com</FONT></MARQUEE></Center>
-<Center><marquee behavior="scroll" scrollamount="5" direction="LEFT"> 
-<a href="#"><img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_8a431b1b1e2a461b881bad2541b95f08~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_461fdaa13c3d41e98cad9b4f236d45e0~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_48b6e6ea22384922b5d3ccb653d6c56c~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png"></a>
-<a href="#"><img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png"></a>
-</marquee></Center>
+<div class="marquee-container">
+  <div class="marquee-content">
+    <!-- Lista Original de Patrocinadores -->
+    <img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png" alt="Patrocinador 1">
+    <img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png" alt="Patrocinador 2">
+    <img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg" alt="Patrocinador 3">
+    <img src="https://static.wixstatic.com/media/689246_8a431b1b1e2a461b881bad2541b95f08~mv2.png" alt="Patrocinador 4">
+	<img src="https://static.wixstatic.com/media/689246_461fdaa13c3d41e98cad9b4f236d45e0~mv2.png" alt="Patrocinador 5">
+	<img src="https://static.wixstatic.com/media/689246_48b6e6ea22384922b5d3ccb653d6c56c~mv2.png" alt="Patrocinador 6">
+	<img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png" alt="Patrocinador 7">
+	<img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png" alt="Patrocinador 8">
+	<img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png" alt="Patrocinador 9">
+    
+    <!-- Lista Duplicada para o efeito infinito -->
+    <img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png" alt="Patrocinador 1">
+    <img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png" alt="Patrocinador 2">
+    <img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg" alt="Patrocinador 3">
+    <img src="https://static.wixstatic.com/media/689246_8a431b1b1e2a461b881bad2541b95f08~mv2.png" alt="Patrocinador 4">
+	<img src="https://static.wixstatic.com/media/689246_461fdaa13c3d41e98cad9b4f236d45e0~mv2.png" alt="Patrocinador 5">
+	<img src="https://static.wixstatic.com/media/689246_48b6e6ea22384922b5d3ccb653d6c56c~mv2.png" alt="Patrocinador 6">
+	<img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png" alt="Patrocinador 7">
+	<img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png" alt="Patrocinador 8">
+	<img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png" alt="Patrocinador 9">
+  </div>
+</div>
 
+<style>
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  background: #f4f4f4; 
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 40px; 
+  animation: scrollInverso 20s linear infinite;
+}
+
+.marquee-content img {
+  height: 50px; 
+  width: auto;
+  object-fit: contain;
+}
+
+/* ESTE BLOCO FAZ ANDAR DA ESQUERDA PARA A DIREITA */
+@keyframes scrollInverso {
+  0% {
+    transform: translateX(-50%); /* Começa empurrado para a esquerda */
+  }
+  100% {
+    transform: translateX(0); /* Termina na posição original */
+  }
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+</style>
 </script>
   
 </body>
