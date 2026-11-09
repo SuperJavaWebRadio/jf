@@ -2,43 +2,18 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="utf-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1"
->
-
-<meta
-name="theme-color"
-content="#08298a"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08298a">
 <title>SUPER JAVA WEB RÁDIO</title>
 
-<link
-rel="icon"
-type="image/png"
-href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png"
->
-
-<link
-rel="shortcut icon"
-href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png"
->
-
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
->
-
+<link rel="icon" type="image/png" href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png">
+<link rel="shortcut icon" href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 <script src="js/lunaradio-animado.js"></script>
 
 <style>
-
 html,
 body {
     margin: 0;
@@ -50,10 +25,15 @@ body {
     overflow: hidden;
 }
 
-/* PLAYER */
+/* PLAYER - reserva a área inferior para patrocinadores e rodapé */
 #player {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 127px);
+    overflow: hidden;
+    z-index: 1;
 }
 
 /* MENU */
@@ -223,7 +203,8 @@ footer a {
 /* RESPONSIVO */
 @media (max-width: 768px) {
     #player {
-        transform: scale(.95);
+        height: calc(100% - 112px);
+        transform: none;
     }
 
     #faixa-patrocinadores {
@@ -244,95 +225,58 @@ footer a {
 
 @media (max-width: 480px) {
     #player {
-        transform: scale(.82);
+        transform: none;
     }
 }
-
 </style>
-
 </head>
 
 <body>
-
-<button
-type="button"
-class="mobile-nav-toggle"
-aria-label="Abrir menu"
->
-
-<i class="fas fa-bars"></i>
-
+<button type="button" class="mobile-nav-toggle" aria-label="Abrir menu">
+    <i class="fas fa-bars"></i>
 </button>
 
 <header id="header">
-
-<nav class="nav-menu">
-
-<ul>
-
-<li>
-<a
-target="_blank"
-rel="noopener"
-href="https://play.google.com/store/apps"
->
-<i class="fab fa-google-play"></i>
-<span>Baixar APP</span>
-</a>
-</li>
-
-<li>
-<a
-target="_blank"
-rel="noopener"
-href="https://www.facebook.com/superjavawebradio"
->
-<i class="fab fa-facebook-square"></i>
-<span>Facebook</span>
-</a>
-</li>
-
-<li>
-<a
-target="_blank"
-rel="noopener"
-href="https://www.instagram.com/"
->
-<i class="fab fa-instagram-square"></i>
-<span>Instagram</span>
-</a>
-</li>
-
-<li>
-<a
-target="_blank"
-rel="noopener"
-href="https://wa.me/5532991333934"
->
-<i class="fab fa-whatsapp-square"></i>
-<span>Whatsapp</span>
-</a>
-</li>
-
-</ul>
-
-</nav>
-
+    <nav class="nav-menu">
+        <ul>
+            <li>
+                <a target="_blank" rel="noopener" href="https://play.google.com/store/apps">
+                    <i class="fab fa-google-play"></i>
+                    <span>Baixar APP</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" rel="noopener" href="https://www.facebook.com/superjavawebradio">
+                    <i class="fab fa-facebook-square"></i>
+                    <span>Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/">
+                    <i class="fab fa-instagram-square"></i>
+                    <span>Instagram</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" rel="noopener" href="https://wa.me/5532991333934">
+                    <i class="fab fa-whatsapp-square"></i>
+                    <span>Whatsapp</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
 
 <div id="player"></div>
 
 <div class="background_hora">
-<span id="relogio">00:00:00</span>
+    <span id="relogio">00:00:00</span>
 </div>
 
 <!-- FAIXA DE PATROCINADORES -->
 <div id="faixa-patrocinadores">
-
     <div id="movimento-patrocinadores">
-
         <div class="grupo-patrocinadores">
-
             <img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png" alt="Patrocinador 1">
             <img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png" alt="Patrocinador 2">
             <img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg" alt="Patrocinador 3">
@@ -342,12 +286,9 @@ href="https://wa.me/5532991333934"
             <img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png" alt="Patrocinador 7">
             <img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png" alt="Patrocinador 8">
             <img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png" alt="Patrocinador 9">
-
         </div>
 
-        <!-- Cópia idêntica para criar a animação contínua -->
         <div class="grupo-patrocinadores" aria-hidden="true">
-
             <img src="https://static.wixstatic.com/media/689246_2f599a4709ae48cba79116e448f34213~mv2.png" alt="">
             <img src="https://static.wixstatic.com/media/689246_9f7d363ce0df4557902c5221498c8023~mv2.png" alt="">
             <img src="https://static.wixstatic.com/media/689246_18b4fffa1e5c4fdda222d622e5047aa3~mv2.jpg" alt="">
@@ -357,97 +298,55 @@ href="https://wa.me/5532991333934"
             <img src="https://static.wixstatic.com/media/689246_d12c415a66c24431bf149a7fd9ea671e~mv2.png" alt="">
             <img src="https://static.wixstatic.com/media/689246_b2ddd6df649443df9ed2087f9b077256~mv2.png" alt="">
             <img src="https://static.wixstatic.com/media/689246_7cf3f48d8f3d45e1bc618466b1f61c80~mv2.png" alt="">
-
         </div>
-
     </div>
-
 </div>
 <!-- FIM DA FAIXA DE PATROCINADORES -->
 
 <footer>
-<div>
-© 2026 -
-<a href="mailto:contatosuperjavawebradio@gmail.com">
-Super Java Web Rádio
-</a>
-</div>
+    <div>
+        © 2026 -
+        <a href="mailto:contatosuperjavawebradio@gmail.com">Super Java Web Rádio</a>
+    </div>
 </footer>
 
 <script>
-
 $("#player").lunaradio({
-
     userinterface: "big",
-
     backgroundcolor: "rgba(9,15,25,0.80)",
-
     fontcolor: "#ffffff",
-
     hightlightcolor: "#00ff88",
-
     fontname: "Saira Condensed",
-
     googlefont: "Saira+Condensed:wght@100",
-
     fontratio: "0.4",
-
     radioname: "Você está ouvindo agora...",
-
     scroll: "true",
-
     coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
-
     onlycoverimage: "false",
-
     coverstyle: "animated",
-
     usevisualizer: "real",
-
     visualizertype: "8",
-
     itunestoken: "1000lIPN",
-
     metadatatechnic: "corsproxy",
-
     corsproxy: "https://corsproxy.io/?",
-
     usestreamcorsproxy: "false",
-
     streamurl: "https://stream.zeno.fm/ego2eudayomtv.mp3",
-
     streamtype: "zeno",
-
     idzeno: "ego2eudayomtv",
-
     icecastmountpoint: "",
-
     shoutcastpath: "",
-
     shoutcastid: "1",
-
     metadatainterval: "20000",
-
     volume: "100",
-
     debug: "false",
-
     autoplay: "true",
-
     displayliveicon: "true",
-
     visualizeropacity: "1.0",
-
     multicolorvisualizer: "true",
-
     color1: "#00FF00",
-
     color2: "#ffff00",
-
     color3: "#FF1F6F",
-
     color4: "#FF1F6F"
-
 });
 
 /* RELÓGIO */
@@ -455,7 +354,6 @@ function reloj() {
     document.getElementById("relogio").innerHTML =
         new Date().toLocaleTimeString("pt-BR");
 }
-
 reloj();
 setInterval(reloj, 1000);
 
@@ -464,8 +362,6 @@ $(".mobile-nav-toggle").click(function() {
     $("body").toggleClass("mobile-nav-active");
     $(".mobile-nav-toggle i").toggleClass("fa-bars fa-times");
 });
-
 </script>
-
 </body>
 </html>
