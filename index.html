@@ -20,12 +20,12 @@ content="#08298a"
   <link
 rel="icon"
 type="image/png"
-href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png"
+href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png.png"
 >
 
 <link
 rel="shortcut icon"
-href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png"
+href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png.png"
 >
 
 <link
@@ -449,7 +449,7 @@ corsproxy: "https://corsproxy.io/?",
 
 usestreamcorsproxy: "false",
 
-streamurl: "https://stream.zeno.fm/ego2eudayomtv.mp3",
+streamurl: "https://stream-176.zeno.fm/ego2eudayomtv.mp3",
 
 streamtype: "zeno",
 
@@ -509,6 +509,30 @@ $(".mobile-nav-toggle i")
 });
 
 </script>
+ <script>
+  // 1. Bloqueia o clique com botão direito
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+  // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && (
+        e.key === 'c' || 
+        e.key === 'C' || 
+        e.key === 'v' || 
+        e.key === 'V' || 
+        e.key === 'u' || 
+        e.key === 'U' || 
+        e.key === 's' || 
+        e.key === 'S'
+      ))
+    ) {
+      e.preventDefault();
+    }
+  });
+</script> 
 
 </body>
 </html>
