@@ -1407,12 +1407,12 @@ if (!Va)
 if ("undefined" == typeof Aa) {
 if ("real" == da) {
 try {
-Aa = new(window.AudioContext || window.webkitAudioContext), ua = Aa.createAnalyser(), ua.smoothingTimeConstant = .9, ua.fftSize = 1024, w("analyzer is created")
+Aa = new(window.AudioContext || window.webkitAudioContext), ua = Aa.createAnalyser(), rb = Rb(Aa), ua.smoothingTimeConstant = .9, ua.fftSize = 1024, w("analyzer is created")
 } catch (b) {
 w("error" + b), "real" == da && (da = "fake")
 }
 try {
-"crossOrigin" in F ? (w("found crossOrigin"), F.crossOrigin = "anonymous", F.onerror = Sb, sb = F, Za = Aa.createMediaElementSource(sb), Za.connect(ua), ua.connect(Aa.destination), w("analyzer is connected")) : w("no crossOrigin")
+"crossOrigin" in F ? (w("found crossOrigin"), F.crossOrigin = "anonymous", F.onerror = Sb, sb = F, Za = Aa.createMediaElementSource(sb), Za.connect(ua), Za.connect(rb), ua.connect(Aa.destination), w("analyzer is connected")) : w("no crossOrigin")
 } catch (b) {
 w("error" +
 b)
@@ -1431,6 +1431,26 @@ if (ba()) F.muted = !0;
 else try {
 F.pause(), H()
 } catch (b) {}
+}
+
+function Rb(b) {
+var a = b.createScriptProcessor(512);
+a.onaudioprocess = Tb;
+a.averaging = .98;
+a.connect(b.destination);
+return a
+}
+
+function Tb(b) {
+var a = b.inputBuffer.getChannelData(0);
+b = b.inputBuffer.getChannelData(1);
+for (var h = a.length, p = b.length, v = 0, z, m = 0; m < h; m++) z = a[m], v += z * z;
+a = Math.sqrt(v / h);
+Ea =
+Math.max(a, Ea * this.averaging);
+for (m = v = 0; m < p; m++) z = b[m], v += z * z;
+a = Math.sqrt(v / p);
+Fa = Math.max(a, Fa * this.averaging)
 }
 
 function Sb(b) {
