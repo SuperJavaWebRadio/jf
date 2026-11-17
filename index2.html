@@ -20,7 +20,7 @@ content="#08298a"
   <link
 rel="icon"
 type="image/png"
-href="https://i.postimg.cc/NFRjKKMY/LOGO-"
+href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png"
 >
 
 <link
@@ -412,43 +412,78 @@ Super Java Web Rádio
 <script>
 
 $("#player").lunaradio({
-    userinterface: "big",
-    backgroundcolor: "rgba(9,15,25,0.80)",
-    fontcolor: "#ffffff",
-    hightlightcolor: "#00ff88",
-    fontname: "Saira Condensed",
-    googlefont: "Saira+Condensed:wght@100",
-    fontratio: "0.4",
-    radioname: "Você está ouvindo agora...",
-    scroll: "true",
-    coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-",
-    onlycoverimage: "false",
-    coverstyle: "animated",
-    usevisualizer: "fake", // Alterado de "real" para "fake" para não cortar o áudio
-    visualizertype: "8",
-    itunestoken: "1000lIPN",
-    metadatatechnic: "directly", // Alterado para evitar bloqueio do corsproxy.io
-    corsproxy: "",
-    usestreamcorsproxy: "false",
-    streamurl: "https://stream.zeno.fm/ego2eudayomtv",
-    streamtype: "zeno",
-    idzeno: "ego2eudayomtv",
-    icecastmountpoint: "",
-    shoutcastpath: "",
-    shoutcastid: "1",
-    metadatainterval: "20000",
-    volume: "100",
-    debug: "false",
-    autoplay: "false", // Evita conflitos de inicialização no navegador
-    displayliveicon: "true",
-    visualizeropacity: "1.0",
-    multicolorvisualizer: "true",
-    color1: "#00FF00",
-    color2: "#ffff00",
-    color3: "#FF1F6F",
-    color4: "#FF1F6F"
-});
 
+userinterface: "big",
+
+backgroundcolor: "rgba(9,15,25,0.80)",
+
+fontcolor: "#ffffff",
+
+hightlightcolor: "#00ff88",
+
+fontname: "Saira Condensed",
+
+googlefont: "Saira+Condensed:wght@100",
+
+fontratio: "0.4",
+
+radioname: "Você está ouvindo agora...",
+
+scroll: "true",
+
+coverimage: "https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png",
+
+onlycoverimage: "false",
+
+coverstyle: "animated",
+
+usevisualizer: "fake",
+
+visualizertype: "8",
+
+itunestoken: "1000lIPN",
+
+metadatatechnic: "",
+
+corsproxy: "",
+
+usestreamcorsproxy: "false",
+
+streamurl: "https://stream.zeno.fm/ego2eudayomtv",
+
+streamtype: "icecast",
+
+idzeno: "ego2eudayomtv",
+
+icecastmountpoint: "",
+
+shoutcastpath: "",
+
+shoutcastid: "1",
+
+metadatainterval: "60000",
+
+volume: "100",
+
+debug: "false",
+
+autoplay: "true",
+
+displayliveicon: "true",
+
+visualizeropacity: "1.0",
+
+multicolorvisualizer: "true",
+
+color1: "#00FF00",
+
+color2: "#ffff00",
+
+color3: "#FF1F6F",
+
+color4: "#FF1F6F"
+
+});
 
 /* RELÓGIO */
 
@@ -474,30 +509,6 @@ $(".mobile-nav-toggle i")
 });
 
 </script>
- <script>
-  // 1. Bloqueia o clique com botão direito
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-  });
-  // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
-  document.addEventListener('keydown', function (e) {
-    if (
-      e.key === 'F12' ||
-      (e.ctrlKey && (
-        e.key === 'c' || 
-        e.key === 'C' || 
-        e.key === 'v' || 
-        e.key === 'V' || 
-        e.key === 'u' || 
-        e.key === 'U' || 
-        e.key === 's' || 
-        e.key === 'S'
-      ))
-    ) {
-      e.preventDefault();
-    }
-  });
-</script> 
 
 </body>
 </html>
