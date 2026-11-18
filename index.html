@@ -31,13 +31,13 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        /* Estilo da Logo da Rádio */
         .logo-radio {
-            max-width: 320px; /* Largura máxima da logo */
-            max-height: 220px; /* Altura máxima da logo */
+            max-width: 240px;
+            max-height: 240px;
             width: auto;
             height: auto;
             margin-bottom: 20px;
+            border-radius: 12px;
             object-fit: contain;
         }
         h1 {
@@ -71,9 +71,22 @@
         }
         .player-box p {
             font-size: 0.9rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #ffffff;
             font-weight: bold;
+        }
+        .now-playing {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #28a745;
+            font-weight: bold;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         audio {
             width: 100%;
@@ -106,8 +119,7 @@
 <body>
 
     <div class="container">
-        <!-- Substitua "logo.png" pelo nome do arquivo ou link da sua imagem -->
-        <img src="https://i.postimg.cc/VvCb4ZH7/LOGO-SITE2.png" alt="Logo da Rádio" class="logo-radio">
+        <img src="https://i.postimg.cc/VvCb4ZH7/LOGO-SITE2.png" referrerpolicy="no-referrer" alt="Logo Super Java Web Rádio" class="logo-radio">
         
         <br>
         <span class="status-badge">Site em Manutenção</span>
@@ -116,7 +128,10 @@
         
         <div class="player-box">
             <p>Ouça agora mesmo:</p>
-            <audio controls preload="none">
+            <div class="now-playing" id="track-info">
+                🎵 Carregando programação...
+            </div>
+            <audio id="radio-player" controls preload="none">
                 <source src="https://stream.zeno.fm/ego2eudayomtv" type="audio/mpeg">
                 Seu navegador não suporta o player de áudio.
             </audio>
@@ -131,30 +146,80 @@
             <strong>superjavajf@gmail.com</strong></p>
         </div>
     </div>
-    <script>
- // 1. Bloqueia o clique com botão direito
- document.addEventListener('contextmenu', function (e) {
- e.preventDefault();
- });
- // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
- document.addEventListener('keydown', function (e) {
- if (
- e.key === 'F12' ||
- (e.ctrlKey && (
- e.key === 'c' || 
- e.key === 'C' || 
- e.key === 'v' || 
- e.key === 'V' || 
- e.key === 'u' || 
- e.key === 'U' || 
- e.key === 's' || 
- e.key === 'S'
- ))
- ) {
- e.preventDefault();
- }
- });
-</script> 
 
-    </body>
+    <script>
+        // 1. Conexão com a API de Metadados da Zeno.FM
+        const mountPoint = 'ego2eudayomtv';
+        const metadataUrl = `https://zeno.fm{mountPoint}`;
+        const trackInfoElement = document.getElementById('track-info');
+
+        function iniciarMetadados() {
+            const eventSource = new EventSource(metadataUrl);
+
+            eventSource.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data && data.streamTitle) {
+                        const musicaAtual = data.streamTitle;
+                        trackInfoElement.textContent = `🎵 ${musicaAtual}`;
+                        atualizarMediaSession(musicaAtual);
+                    }
+                } catch (e) {
+                    console.error('Erro ao ler metadados:', e);
+                }
+            };
+
+            eventSource.onerror = function() {
+                trackInfoElement.textContent = '🎵 Super Java Web Rádio - Ao Vivo';
+                eventSource.close();
+                setTimeout(iniciarMetadados, 10000);
+            };
+        }
+
+        // 2. Atualiza o player nativo do celular/navegador mantendo apenas a logo da rádio
+        function atualizarMediaSession(tituloCompleto) {
+            if ('mediaSession' in navigator) {
+                let artista = 'Super Java Web Rádio';
+                let musica = tituloCompleto;
+
+                if (tituloCompleto.includes(' - ')) {
+                    const partes = tituloCompleto.split(' - ');
+                    artista = partes[0].trim();
+                    musica = partes.slice(1).join(' - ').trim();
+                }
+
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: musica,
+                    artist: artista,
+                    album: 'Essa Sim é Super!',
+                    artwork: [
+                        { src: 'https://i.postimg.cc/VvCb4ZH7/LOGO-SITE2.png', sizes: '512x512', type: 'image/png' }
+                    ]
+                });
+            }
+        }
+
+        iniciarMetadados();
+
+        // 3. Proteções de clique direito e atalhos
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && (
+                    e.key === 'c' || e.key === 'C' || 
+                    e.key === 'v' || e.key === 'V' || 
+                    e.key === 'u' || e.key === 'U' || 
+                    e.key === 's' || e.key === 'S'
+                ))
+            ) {
+                e.preventDefault();
+            }
+        });
+    </script> 
+
+</body>
 </html>
