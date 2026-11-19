@@ -4,230 +4,322 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Super Java Web Rádio</title>
-    <meta name="description" content="Super Java Web Rádio">
-    <meta name="keywords" content="Super Java Web Rádio">
-    <link rel="canonical" href="https://superjavawebradio.github.io/jf/">
+    <title>Super Java Web Rádio — Ao Vivo</title>
+    <meta name="description" content="Ouça a Super Java Web Rádio ao vivo! Música tocando agora com capa do álbum, letra da música e histórico.">
+    <link rel="canonical" href="https://github.io">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Super Java Web Rádio">
-    <meta property="og:description" content="Super Java Web Rádio">
-    <meta property="og:url" content="https://superjavawebradio.github.io/jf/">
-    <meta property="og:image" content="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="Super Java Web Rádio — Ao Vivo">
+    <meta property="og:description" content="Ouça a Super Java Web Rádio ao vivo com capa, letra e histórico.">
+    <meta property="og:url" content="https://github.io">
+    <meta property="og:image" content="https://postimg.cc">
     <meta name="theme-color" content="#0b0e13">
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png" />
+    <link rel="icon" type="image/png" href="https://postimg.cc" />
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cloudflare.com">
 
     <style>
-        /* MENU DE 3 TRACINHOS NO CANTO SUPERIOR ESQUERDO */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #0b0e13;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* FUNDO DESFOCADO COM CAPA */
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        #bgCover {
+            position: absolute;
+            inset: -30px;
+            background-image: url('https://postimg.cc');
+            background-size: cover;
+            background-position: center;
+            filter: blur(28px) brightness(0.45);
+            transition: background-image 0.6s ease;
+        }
+
+        .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(11, 14, 19, 0.35), rgba(11, 14, 19, 0.92));
+        }
+
+        /* MENU DE 3 TRACINHOS (CANTO SUPERIOR ESQUERDO) */
         details.menu-social-nativo {
-            position: fixed !important;
-            top: 16px !important;
-            left: 20px !important;
-            z-index: 2147483647 !important;
-            font-family: 'Poppins', Arial, sans-serif !important;
+            position: fixed;
+            top: 16px;
+            left: 20px;
+            z-index: 9999;
         }
 
         details.menu-social-nativo > summary {
-            list-style: none !important;
-            width: 44px !important;
-            height: 44px !important;
-            border-radius: 50% !important;
-            background: rgba(11, 14, 19, 0.85) !important;
-            backdrop-filter: blur(8px) !important;
-            -webkit-backdrop-filter: blur(8px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.25) !important;
-            color: #ffffff !important;
-            font-size: 18px !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45) !important;
-            user-select: none !important;
+            list-style: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(11, 14, 19, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+            user-select: none;
         }
 
         details.menu-social-nativo > summary::-webkit-details-marker {
-            display: none !important;
+            display: none;
         }
 
         details.menu-social-nativo > summary:hover {
-            background: rgba(255, 255, 255, 0.18) !important;
+            background: rgba(255, 255, 255, 0.18);
         }
 
         details.menu-social-nativo .lista-redes {
-            margin-top: 10px !important;
-            min-width: 200px !important;
-            background: rgba(15, 19, 26, 0.96) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 14px !important;
-            padding: 8px !important;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 4px !important;
+            margin-top: 10px;
+            min-width: 200px;
+            background: rgba(15, 19, 26, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         details.menu-social-nativo .lista-redes a {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            padding: 10px 12px !important;
-            color: #ffffff !important;
-            text-decoration: none !important;
-            font-size: 14px !important;
-            font-weight: 500 !important;
-            border-radius: 8px !important;
-            transition: background 0.2s ease !important;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background 0.2s ease;
         }
 
         details.menu-social-nativo .lista-redes a:hover {
-            background: rgba(255, 255, 255, 0.15) !important;
+            background: rgba(255, 255, 255, 0.15);
         }
 
         details.menu-social-nativo .lista-redes a i {
-            width: 18px !important;
-            text-align: center !important;
-            font-size: 16px !important;
+            width: 18px;
+            text-align: center;
+            font-size: 16px;
         }
 
-        /* RELÓGIO DIGITAL NO CANTO SUPERIOR DIREITO */
+        /* RELÓGIO DIGITAL (CANTO SUPERIOR DIREITO) */
         #relogio-digital {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            position: fixed !important;
-            top: 16px !important;
-            right: 20px !important;
-            font-family: 'Poppins', Arial, sans-serif !important;
-            font-size: 15px !important;
-            font-weight: 600 !important;
-            letter-spacing: 1px !important;
-            color: #ffffff !important;
-            background: rgba(11, 14, 19, 0.85) !important;
-            backdrop-filter: blur(8px) !important;
-            -webkit-backdrop-filter: blur(8px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.25) !important;
-            padding: 10px 14px !important;
-            border-radius: 12px !important;
-            z-index: 2147483647 !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45) !important;
+            position: fixed;
+            top: 16px;
+            right: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #ffffff;
+            background: rgba(11, 14, 19, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 10px 14px;
+            border-radius: 12px;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
         }
 
-        /* RODAPÉ (FOOTER) */
-        .rodape-radio {
-            width: 100% !important;
-            text-align: center !important;
-            padding: 20px 10px 28px 10px !important;
-            margin-top: 24px !important;
-            font-family: 'Poppins', Arial, sans-serif !important;
-            font-size: 13px !important;
-            color: rgba(255, 255, 255, 0.65) !important;
-            position: relative !important;
-            z-index: 10 !important;
+        /* CONTEÚDO PRINCIPAL DO PLAYER */
+        main.app {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 780px;
+            padding: 80px 20px 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .rodape-radio a {
-            color: #ffffff !important;
-            text-decoration: none !important;
-            font-weight: 600 !important;
+        .masthead {
+            margin-bottom: 28px;
+            text-align: center;
         }
 
-        .rodape-radio a:hover {
-            text-decoration: underline !important;
+        #radioName {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.75);
         }
 
-        @media (max-width: 600px) {
-            #relogio-digital {
-                top: 16px !important;
-                right: 14px !important;
-                font-size: 13px !important;
-                padding: 10px 10px !important;
-            }
-            details.menu-social-nativo {
-                top: 16px !important;
-                left: 14px !important;
-            }
+        .player {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-    </style>
-</head>
 
-<body>
+        .artwork {
+            width: 240px;
+            height: 240px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            flex-shrink: 0;
+        }
 
-    <!-- MENU DE 3 TRACINHOS (REDES SOCIAIS) -->
-    <details class="menu-social-nativo" id="menuSocialNativo">
-        <summary aria-label="Redes Sociais" title="Redes Sociais">
-            <i class="fa fa-bars"></i>
-        </summary>
+        #currentCoverArt {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://postimg.cc');
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease;
+        }
 
-        <!-- TROQUE OS LINKS ABAIXO PELOS SEUS LINKS REAIS -->
-        <div class="lista-redes">
-            <a href="https://wa.me/5532991333934" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-whatsapp" style="color: #25D366;"></i> WhatsApp
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-instagram" style="color: #E1306C;"></i> Instagram
-            </a>
-            <a href="https://www.facebook.com/superjavawebradio" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-facebook-square" style="color: #1877F2;"></i> Facebook
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-youtube-play" style="color: #FF0000;"></i> YouTube
-            </a>
-        </div>
-    </details>
+        .player-info {
+            flex: 1;
+            min-width: 260px;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-    <!-- RELÓGIO DIGITAL -->
-    <div id="relogio-digital">--:--:--</div>
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 14px;
+        }
 
-    <script>
-        (function () {
-            function atualizarHora() {
-                var agora = new Date();
-                var h = ('0' + agora.getHours()).slice(-2);
-                var m = ('0' + agora.getMinutes()).slice(-2);
-                var s = ('0' + agora.getSeconds()).slice(-2);
-                var caixa = document.getElementById('relogio-digital');
-                if (caixa) caixa.textContent = h + ':' + m + ':' + s;
-            }
-            atualizarHora();
-            setInterval(atualizarHora, 1000);
-        })();
-    </script>
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #25D366;
+            box-shadow: 0 0 8px #25D366;
+        }
 
-    <div class="bg" aria-hidden="true">
-        <div id="bgCover"></div>
-        <div class="bg-overlay"></div>
-    </div>
+        #currentSong {
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            word-break: break-word;
+        }
 
-    <main class="app">
-        <header class="masthead">
-            <span id="radioName">Super Java Web Rádio</span>
-        </header>
+        #currentArtist {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 24px;
+        }
 
-        <section class="player">
-            <div class="artwork cover-album">
-                <div id="currentCoverArt"></div>
-            </div>
+        /* CONTROLES (VOLUME, PLAY, LYRICS) */
+        .control-cluster {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
 
-            <div class="player-info">
-                <span class="live-badge"><span class="live-dot"></span> AO VIVO</span>
-                <h1 id="currentSong" class="text-uppercase">Música</h1>
-                <h2 id="currentArtist" class="text-capitalize">Artista</h2>
+        .ctrl-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
 
-                <div class="controls">
-                    <div class="control-cluster">
-                        <div class="volume-wrap volume-control">
-                            <button type="button" class="ctrl-btn volume-toggle" aria-label="Volume" title="Volume">
-                                <i class="fa fa-volume-up"></i>
-                            </button>
-                            <div class="volume-popover" hidden>
-                                <input type="range" id="volume" step="1" min="0" max="100" value="80" aria-label="Volume">
+        .ctrl-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .play-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: none;
+            background: #25D366;
+            color: #0b0e13;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+        }
+
+        .volume-wrap {
+            position: relative;
+        }
+
+        .volume-popover {
+            position: absolute;
+            bottom: 56px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 19, 26, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 14px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+        }
+
