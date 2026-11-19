@@ -4,28 +4,191 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Radio Player Zeno.FM — Player de Rádio HTML5 para Site | Zeno FM, Icecast</title>
-    <meta name="description" content="Player de rádio HTML5 grátis para streams Zeno.FM: música tocando agora com capa do álbum, letra da música, histórico e app instalável (PWA). Sem chave de API — edite duas linhas e publique.">
-    <meta name="keywords" content="zeno fm player, radio player, player de rádio, rádio online, html5 radio player, web radio, zeno radio, streaming de rádio, pwa">
+    <title>Super Java Web Rádio</title>
+    <meta name="description" content="Super Java Web Rádio">
+    <meta name="keywords" content="Super Java Web Rádio">
     <link rel="canonical" href="https://superjavawebradio.github.io/jf/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Radio Player Zeno.FM — Player de Rádio HTML5 para Site">
-    <meta property="og:description" content="Player de rádio HTML5 grátis para Zeno.FM: now playing com capa, letra, histórico e PWA. Sem chave de API.">
+    <meta property="og:title" content="Super Java Web Rádio">
+    <meta property="og:description" content="Super Java Web Rádio">
     <meta property="og:url" content="https://superjavawebradio.github.io/jf/">
-    <meta property="og:image" content="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png">
+    <meta property="og:image" content="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0b0e13">
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1" />
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
+
+    <style>
+        /* MENU NATIVO DE 3 TRACINHOS (CANTO SUPERIOR ESQUERDO) */
+        details.menu-social-nativo {
+            position: fixed !important;
+            top: 16px !important;
+            left: 20px !important;
+            z-index: 2147483647 !important;
+            font-family: 'Poppins', Arial, sans-serif !important;
+        }
+
+        details.menu-social-nativo > summary {
+            list-style: none !important;
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 50% !important;
+            background: rgba(11, 14, 19, 0.85) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            color: #ffffff !important;
+            font-size: 18px !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45) !important;
+            user-select: none !important;
+        }
+
+        details.menu-social-nativo > summary::-webkit-details-marker {
+            display: none !important;
+        }
+
+        details.menu-social-nativo > summary:hover {
+            background: rgba(255, 255, 255, 0.18) !important;
+        }
+
+        details.menu-social-nativo .lista-redes {
+            margin-top: 10px !important;
+            min-width: 200px !important;
+            background: rgba(15, 19, 26, 0.96) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 14px !important;
+            padding: 8px !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 4px !important;
+        }
+
+        details.menu-social-nativo .lista-redes a {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            padding: 10px 12px !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            border-radius: 8px !important;
+            transition: background 0.2s ease !important;
+        }
+
+        details.menu-social-nativo .lista-redes a:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        details.menu-social-nativo .lista-redes a i {
+            width: 18px !important;
+            text-align: center !important;
+            font-size: 16px !important;
+        }
+
+        /* RELÓGIO DIGITAL (CANTO SUPERIOR DIREITO) */
+        #relogio-digital {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: fixed !important;
+            top: 16px !important;
+            right: 20px !important;
+            font-family: 'Poppins', Arial, sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            letter-spacing: 1px !important;
+            color: #ffffff !important;
+            background: rgba(11, 14, 19, 0.85) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            padding: 10px 14px !important;
+            border-radius: 12px !important;
+            z-index: 2147483647 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45) !important;
+        }
+
+        /* RODAPÉ (FOOTER) */
+        .rodape-radio {
+            width: 100% !important;
+            text-align: center !important;
+            padding: 20px 10px 28px 10px !important;
+            margin-top: 24px !important;
+            font-family: 'Poppins', Arial, sans-serif !important;
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.65) !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        .rodape-radio a {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            transition: opacity 0.2s ease !important;
+        }
+
+        .rodape-radio a:hover {
+            opacity: 0.8 !important;
+            text-decoration: underline !important;
+        }
+
+        @media (max-width: 600px) {
+            #relogio-digital {
+                top: 16px !important;
+                right: 14px !important;
+                font-size: 13px !important;
+                padding: 10px 10px !important;
+            }
+            details.menu-social-nativo {
+                top: 16px !important;
+                left: 14px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- MENU NATIVO DE 3 TRACINHOS (CANTO SUPERIOR ESQUERDO) -->
+    <details class="menu-social-nativo" id="menuSocialNativo">
+        <summary aria-label="Redes Sociais" title="Redes Sociais">
+            <i class="fa fa-bars"></i>
+        </summary>
+
+        <!-- TROQUE OS LINKS ABAIXO PELOS SEUS LINKS REAIS -->
+        <div class="lista-redes">
+            <a href="https://wa.me/5532991333934" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-whatsapp" style="color: #25D366;"></i> WhatsApp
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-instagram" style="color: #E1306C;"></i> Instagram
+            </a>
+            <a href="https://www.facebook.com/superjavawebradio" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-facebook-square" style="color: #1877F2;"></i> Facebook
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-youtube-play" style="color: #FF0000;"></i> YouTube
+            </a>
+        </div>
+    </details>
+
+    <!-- RELÓGIO DIGITAL NO CANTO SUPERIOR DIREITO -->
+    <div id="relogio-digital">00:00:00</div>
 
     <div class="bg" aria-hidden="true">
         <div id="bgCover"></div>
@@ -64,123 +227,3 @@
                         </button>
 
                         <button type="button" class="ctrl-btn lyrics" title="Letra da música" aria-label="Letra da música">
-                            <i class="fa fa-music"></i>
-                        </button>
-                    </div>
-                    <span id="buttonPlay" class="sr-only" aria-live="polite">PLAY</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="historic hidden">
-            <h2 class="section-title">Tocadas recentemente</h2>
-            <div class="history-list" id="historicSong">
-                <article>
-                    <div class="cover-historic" id="cover-historic-1"></div>
-                    <div class="music-info">
-                        <div class="song">Música</div>
-                        <div class="artist">Artista</div>
-                    </div>
-                </article>
-                <article>
-                    <div class="cover-historic" id="cover-historic-2"></div>
-                    <div class="music-info">
-                        <div class="song">Música</div>
-                        <div class="artist">Artista</div>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <div id="modalLyrics" role="dialog" aria-modal="true" aria-labelledby="lyricsSong" aria-hidden="true">
-        <div class="modal-card">
-            <header>
-                <h3 id="lyricsSong">Letra</h3>
-                <button type="button" class="modal-close" aria-label="Fechar">
-                    <i class="fa fa-times"></i>
-                </button>
-            </header>
-            <div id="lyric"></div>
-        </div>
-    </div>
-
-    <script type="text/javascript" src="js/script.js"></script>
-    <script>
-        // Modal de letra (substitui o modal do Bootstrap; o script.js sinaliza
-        // que há letra disponível colocando data-toggle no botão .lyrics)
-        (function () {
-            var modal = document.getElementById('modalLyrics');
-            var openButton = document.querySelector('.lyrics');
-
-            function closeModal() {
-                modal.style.display = 'none';
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.classList.remove('modal-open');
-            }
-
-            openButton.addEventListener('click', function (event) {
-                event.preventDefault();
-                if (!openButton.hasAttribute('data-toggle')) return; // sem letra disponível
-                modal.style.display = 'flex';
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('modal-open');
-            });
-
-            modal.addEventListener('click', function (event) {
-                if (event.target === modal) closeModal();
-            });
-            modal.querySelector('.modal-close').addEventListener('click', closeModal);
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape') closeModal();
-            });
-        })();
-
-        // Popover de volume (abre no clique do botão circular, fecha ao clicar fora)
-        (function () {
-            var wrap = document.querySelector('.volume-wrap');
-            var toggle = document.querySelector('.volume-toggle');
-            var popover = document.querySelector('.volume-popover');
-            if (!wrap || !toggle || !popover) return;
-
-            toggle.addEventListener('click', function () {
-                popover.hidden = !popover.hidden;
-            });
-            document.addEventListener('click', function (event) {
-                if (!wrap.contains(event.target)) popover.hidden = true;
-            });
-        })();
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('service-worker.js');
-            });
-        }
-    </script>
-        <script>
- // 1. Bloqueia o clique com botão direito
- document.addEventListener('contextmenu', function (e) {
- e.preventDefault();
- });
- // 2. Bloqueia atalhos de teclado comuns (Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, F12)
- document.addEventListener('keydown', function (e) {
- if (
- e.key === 'F12' ||
- (e.ctrlKey && (
- e.key === 'c' || 
- e.key === 'C' || 
- e.key === 'v' || 
- e.key === 'V' || 
- e.key === 'u' || 
- e.key === 'U' || 
- e.key === 's' || 
- e.key === 'S'
- ))
- ) {
- e.preventDefault();
- }
- });
-</script> 
-</body>
-
-</html>
