@@ -1,6 +1,6 @@
 const RADIO_NAME = 'Super Java Web Rádio';
 const URL_STREAMING = 'https://stream.zeno.fm/ego2eudayomtv';
-const url = 'https://zeno.fm';
+const url = 'https://api.zeno.fm/mounts/metadata/subscribe/ego2eudayomtv';
 let showHistory = true;
 
 var isIntentionalPause = false;
