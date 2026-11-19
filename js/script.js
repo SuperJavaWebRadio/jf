@@ -1,6 +1,6 @@
 const RADIO_NAME = 'Super Java Web Rádio';
-const URL_STREAMING = 'https://stream.zeno.fm/ego2eudayomtv';
-const url = 'https://api.zeno.fm/mounts/metadata/subscribe/ego2eudayomtv';
+const URL_STREAMING = 'https://zeno.fm';
+const url = 'https://zeno.fm';
 let showHistory = true;
 
 var isIntentionalPause = false;
@@ -33,14 +33,14 @@ function fetchLyrics(currentArtist, currentSong) {
     var promise = (async function () {
         var lyric = null;
         try {
-            var response = await fetch('https://api.lyrics.ovh/v1/' + encodeURIComponent(currentArtist) + '/' + encodeURIComponent(currentSong));
+            var response = await fetch('https://lyrics.ovh' + encodeURIComponent(currentArtist) + '/' + encodeURIComponent(currentSong));
             var data = await response.json();
             if (data && data.lyrics) lyric = data.lyrics;
         } catch (error) {}
 
         if (!lyric) {
             try {
-                var responseGet = await fetch('https://lrclib.net/api/get?artist_name=' + encodeURIComponent(currentArtist) + '&track_name=' + encodeURIComponent(currentSong));
+                var responseGet = await fetch('https://lrclib.net' + encodeURIComponent(currentArtist) + '&track_name=' + encodeURIComponent(currentSong));
                 if (responseGet.ok) {
                     var dataGet = await responseGet.json();
                     lyric = dataGet.plainLyrics || dataGet.syncedLyrics || null;
@@ -50,7 +50,7 @@ function fetchLyrics(currentArtist, currentSong) {
 
         if (!lyric) {
             try {
-                var responseSearch = await fetch('https://lrclib.net/api/search?track_name=' + encodeURIComponent(currentSong) + '&artist_name=' + encodeURIComponent(currentArtist));
+                var responseSearch = await fetch('https://lrclib.net' + encodeURIComponent(currentSong) + '&artist_name=' + encodeURIComponent(currentArtist));
                 if (responseSearch.ok) {
                     var results = await responseSearch.json();
                     var hit = Array.isArray(results) && results.find(function (r) { return r.plainLyrics || r.syncedLyrics; });
@@ -76,19 +76,21 @@ class Page {
             var currentSong = document.getElementById('currentSong');
             var currentArtist = document.getElementById('currentArtist');
 
-            if (song !== currentSong.innerHTML) {
+            if (currentSong && song !== currentSong.innerHTML) {
                 currentSong.className = 'animated flipInY text-uppercase';
                 currentSong.innerHTML = song;
 
-                currentArtist.className = 'animated flipInY text-capitalize';
-                currentArtist.innerHTML = artist;
+                if (currentArtist) {
+                    currentArtist.className = 'animated flipInY text-capitalize';
+                    currentArtist.innerHTML = artist;
+                }
 
                 var lyricsSong = document.getElementById('lyricsSong');
                 if (lyricsSong) lyricsSong.innerHTML = song + ' - ' + artist;
 
                 setTimeout(function () {
                     currentSong.className = 'text-uppercase';
-                    currentArtist.className = 'text-capitalize';
+                    if (currentArtist) currentArtist.className = 'text-capitalize';
                 }, 2000);
             }
         };
@@ -99,7 +101,7 @@ class Page {
 
             const script = document.createElement('script');
             script.id = 'deezer-jsonp';
-            script.src = `https://api.deezer.com/search?q=${encodeURIComponent(artist + ' ' + song)}&output=jsonp&callback=handleDeezerResponse`;
+            script.src = 'https://deezer.com' + encodeURIComponent(artist + ' ' + song) + '&output=jsonp&callback=handleDeezerResponse';
             document.body.appendChild(script);
         };
 
@@ -124,11 +126,12 @@ class Page {
 
         this.refreshLyric = async function (currentSong, currentArtist) {
             var lyric = await fetchLyrics(currentArtist, currentSong);
-            var openLyric = document.getElementsByClassName('lyrics')[0];
+            var openLyric = document.querySelector('.lyrics');
             if (!openLyric) return;
 
             if (lyric) {
-                document.getElementById('lyric').innerHTML = lyric.replace(/\n/g, '<br />');
+                var lyricBox = document.getElementById('lyric');
+                if (lyricBox) lyricBox.innerHTML = lyric.replace(/\n/g, '<br />');
                 openLyric.style.opacity = "1";
                 openLyric.setAttribute('data-toggle', 'modal');
             } else {
@@ -146,7 +149,6 @@ class Page {
 }
 
 var audio = new Audio(URL_STREAMING);
-audio.crossOrigin = 'anonymous';
 
 class Player {
     constructor() {
@@ -274,5 +276,3 @@ function updateHistory(song, artist) {
     if (history.length > 0 && history[0].song === song && history[0].artist === artist) return;
 
     history.unshift({ song: song, artist: artist });
-    if (history.length > 4) history.pop();
-    localStorage.setItem('musicHistory', JSON.stringify(history));
