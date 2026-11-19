@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Super Java Web Rádio</title>
-    <meta name="description" content="Super Java Web Rádio">
-    <meta name="keywords" content="Super Java Web Rádio">
+    <title>SUPER JAVA WEB RÁDIO</title>
+    <meta name="description" content="SUPER JAVA WEB RÁDIO">
+    <meta name="keywords" content="SUPER JAVA WEB RÁDIO">
     <link rel="canonical" href="https://superjavawebradio.github.io/jf/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Super Java Web Rádio">
-    <meta property="og:description" content="Super Java Web Rádio">
+    <meta property="og:title" content="SUPER JAVA WEB RÁDIO">
+    <meta property="og:description" content="SUPER JAVA WEB RÁDIO">
     <meta property="og:url" content="https://superjavawebradio.github.io/jf/">
     <meta property="og:image" content="https://i.postimg.cc/NFRjKKMY/LOGO-SITE1">
     <meta name="twitter:card" content="summary_large_image">
@@ -188,7 +188,23 @@
     </details>
 
     <!-- RELÓGIO DIGITAL NO CANTO SUPERIOR DIREITO -->
-    <div id="relogio-digital">00:00:00</div>
+    <div id="relogio-digital">--:--:--</div>
+
+    <!-- SCRIPT IMEDIATO DO RELÓGIO -->
+    <script>
+        (function () {
+            function atualizarHora() {
+                var agora = new Date();
+                var h = ('0' + agora.getHours()).slice(-2);
+                var m = ('0' + agora.getMinutes()).slice(-2);
+                var s = ('0' + agora.getSeconds()).slice(-2);
+                var caixa = document.getElementById('relogio-digital');
+                if (caixa) caixa.textContent = h + ':' + m + ':' + s;
+            }
+            atualizarHora();
+            setInterval(atualizarHora, 1000);
+        })();
+    </script>
 
     <div class="bg" aria-hidden="true">
         <div id="bgCover"></div>
@@ -217,13 +233,3 @@
                                 <i class="fa fa-volume-up"></i>
                             </button>
                             <div class="volume-popover" hidden>
-                                <input type="range" id="volume" step="1" min="0" max="100" value="80" aria-label="Volume">
-                                <span class="vol-value"><span id="volIndicator">80</span>%</span>
-                            </div>
-                        </div>
-
-                        <button type="button" class="play-btn" onclick="togglePlay()" aria-label="Tocar ou pausar">
-                            <i id="playerButton" class="fa fa-play"></i>
-                        </button>
-
-                        <button type="button" class="ctrl-btn lyrics" title="Letra da música" aria-label="Letra da música">
